@@ -12,7 +12,7 @@
 
                 <!-- buttons -->
                 <div class="controls">
-                    <button class="btn btnPrimary">Submit!</button>
+                    <AppButton>Submit!</AppButton>
                 </div>
             </form>
         </div>
@@ -20,7 +20,10 @@
 </template>
 
 <script>
+import AppButton from '@/components/UI/Controls/Button'
+
 export default {
+    components: {AppButton},
     data() {
         return {
             user: {
