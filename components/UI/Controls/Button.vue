@@ -1,6 +1,6 @@
 <template>
     <button
-        class="btn"
+        class="btn btn-controls"
         :class="btnClass"
         v-on="$listeners"
         v-bind="$attrs"
@@ -19,3 +19,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+    .btn-controls{
+        margin: 30px 0;
+    }
+</style>

@@ -3,17 +3,13 @@
         <div class="container">
             <h2 class="title">Contact me!</h2>
             <form @submit.prevent="onSubmit" class="contact-form">
-                <label>Name:</label>
-                <input v-model="user.name" type="text">
-                <label>Email:</label>
-                <input v-model="user.email" type="text">
-                <label>Text:</label>
-                <textarea v-model="user.text"></textarea>
 
-                <!-- buttons -->
-                <div class="controls">
-                    <AppButton>Submit!</AppButton>
-                </div>
+                <AppInput v-model="user.name">Name:</AppInput>
+                <AppInput v-model="user.email" type="email">Email:</AppInput>
+                <AppTextArea v-model="user.text">Text:</AppTextArea>
+
+                <AppButton>Submit!</AppButton>
+                
             </form>
         </div>
     </section>
@@ -21,9 +17,15 @@
 
 <script>
 import AppButton from '@/components/UI/Controls/Button'
+import AppInput from '@/components/UI/Controls/Input'
+import AppTextArea from '@/components/UI/Controls/TextArea'
 
 export default {
-    components: {AppButton},
+    components: {
+        AppButton,
+        AppInput,
+        AppTextArea
+    },
     data() {
         return {
             user: {
@@ -45,12 +47,10 @@ export default {
     .contact {
         text-align: center;
         background-color: #9abdfd;
+        
         &-form {
             max-width: 600px;
             margin: 30px auto;
         }
-    }
-    .controls{
-        margin: 30px 0;
     }
 </style>

@@ -3,15 +3,11 @@
         <div class="container">
             <h2 class="title">New comment:</h2>
             <form @submit.prevent="onSubmit" class="new-comment__form">
-                <label>Name:</label>
-                <input v-model="comment.name" type="text">
-                <label>Text:</label>
-                <textarea v-model="comment.text"></textarea>
 
-                <!-- buttons -->
-                <div class="controls">
-                    <AppButton>Submit!</AppButton>
-                </div>
+                <AppInput v-model="comment.name">Name:</AppInput>
+                <AppTextArea v-model="comment.text">Text:</AppTextArea>
+
+                <AppButton>Submit!</AppButton>
 
             </form>
         </div>
@@ -20,9 +16,15 @@
 
 <script>
 import AppButton from '@/components/UI/Controls/Button'
+import AppInput from '@/components/UI/Controls/Input'
+import AppTextArea from '@/components/UI/Controls/TextArea'
 
 export default {
-    components: {AppButton},
+    components: {
+        AppButton,
+        AppInput,
+        AppTextArea
+    },
     data() {
         return {
             comment: {
@@ -47,8 +49,5 @@ export default {
             max-width: 600px;
             margin: 30px auto;
         }
-    }
-    .controls{
-        margin: 30px 0;
     }
 </style>
