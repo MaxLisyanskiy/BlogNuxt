@@ -2,10 +2,8 @@
   <div class="wrapper-content wrapper-content--fixed">
     <Promo />
     <Intro title="My lasts posts: "/>
-
     <!-- posts: -->
     <PostsList :posts="posts"/>
-
     <Contacts/>
   </div>
 </template>
