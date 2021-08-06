@@ -11,7 +11,6 @@ import Post from "@/components/Blog/Post"
 import Comments from "@/components/Comments/Comments"
 import NewComment from "@/components/Comments/NewComment"
 
-
 export default {
     components: {
         Post,

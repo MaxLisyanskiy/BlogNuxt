@@ -12,16 +12,11 @@
 
 <script>
 import Promo from '@/components/Promo'
-import Intro from '@/components/UI/Intro'
-import PostsList from '@/components/Blog/PostsList'
-import Contacts from '../components/Contacts.vue'
-
+import Contacts from '@/components/Contacts.vue'
 
 export default {
   components: {
     Promo, 
-    Intro,
-    PostsList,
     Contacts
   },
   data () {
