@@ -2,6 +2,9 @@
     <section class="new-comment">
         <div class="container">
             <h2 class="title">New comment:</h2>
+
+            <Message v-if="message" :message="message"/>
+
             <form @submit.prevent="onSubmit" class="new-comment__form">
 
                 <AppInput v-model="comment.name">Name:</AppInput>
@@ -18,15 +21,18 @@
 import AppButton from '@/components/UI/Controls/Button'
 import AppInput from '@/components/UI/Controls/Input'
 import AppTextArea from '@/components/UI/Controls/TextArea'
+import Message from '@/components/UI/Message'
 
 export default {
     components: {
         AppButton,
         AppInput,
-        AppTextArea
+        AppTextArea,
+        Message
     },
     data() {
         return {
+            message: null,
             comment: {
                 name: '',
                 text: ''
@@ -35,6 +41,8 @@ export default {
     },
     methods: {
         onSubmit () {
+            this.message = 'Submited!'
+
             console.log(this.comment)
         }
     }
