@@ -15,6 +15,7 @@
 <script>
 import Header from '@/components/system/Header.vue'
 export default {
-    components: { Header }
+    components: { Header },
+    middleware: ['auth']
 }
 </script>
