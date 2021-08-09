@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Post from "@/components/Blog/Post"
 import Comments from "@/components/Comments/Comments"
 import NewComment from "@/components/Comments/NewComment"
@@ -17,19 +18,14 @@ export default {
         Comments,
         NewComment
     },
-    data() {
+    async asyncData(context) {
+        let [post, comments] = await Promise.all([
+            axios.get(`https://blog-nuxt-67ba8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`),
+            axios.get(`https://blog-nuxt-67ba8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)
+        ])
         return {
-            post: {
-                id: 1,
-                title: '1 post',
-                descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                img: 'https://lawnuk.com/wp-content/uploads/2016/08/sprogs-dogs.jpg',
-                content: 'Lorem ipsum dolor sit amet'
-            },
-            comments: [
-                { name: 'Alex', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-                { name: 'Max', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-            ]
+            post: post.data,
+            comments: comments.data
         }
     }
 }

@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const state = () => ({
-    postsLoaded: []
+    postsLoaded: [],
+    commentsLoaded: []
 })
 export const mutations = {
     setPosts(state, posts) {
@@ -14,7 +15,11 @@ export const mutations = {
     editPost (state, postEdit) {
         const postIndex = state.postsLoaded.findIndex( post => post.id === postEdit.id )
         state.postsLoaded[postIndex] = postEdit
-    }
+    },
+    addComment (state, comment) {
+        console.log(comment)
+        state.commentsLoaded.push(comment)
+    },
 }
 
 export const actions = {
@@ -41,6 +46,14 @@ export const actions = {
         return axios.put(`https://blog-nuxt-67ba8-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, post)
         .then(res => {
             commit('editPost', post )
+        })
+        .catch(e => console.log(e))
+    },
+    addComment ({commit}, comment) {
+        return axios.post('https://blog-nuxt-67ba8-default-rtdb.europe-west1.firebasedatabase.app/comments.json', comment)
+        .then(res => {
+            // console.log(res)
+            commit('addComment', { ...comment, id: res.data.name } )
         })
         .catch(e => console.log(e))
     }
