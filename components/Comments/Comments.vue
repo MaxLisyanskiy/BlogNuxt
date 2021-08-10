@@ -1,7 +1,7 @@
 <template>
     <section v-if="comments" class="comments">
         <div class="container">
-            <h3 class="title">Comments:</h3>
+            <h3 class="title">Comments: <span v-if="comments.length == 0">0</span></h3>
             <div class="comments__item" v-for="(comment, index) in comments" :key="index">
                 <p class="comments__name">{{comment.name}}</p>
                 <p class="comments__text">{{comment.text}}</p>

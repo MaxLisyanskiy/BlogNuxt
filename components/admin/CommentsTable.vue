@@ -1,6 +1,5 @@
 <template>
   <section>
-    <div class="container">
       <table>
 
         <!-- thead -->
@@ -13,7 +12,6 @@
         <slot name="tbody"> </slot>
 
       </table>
-    </div>
   </section>
 </template>
 
