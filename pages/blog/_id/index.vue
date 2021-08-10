@@ -2,7 +2,7 @@
   <div class="wrapper-content wrapper-content--fixed">
       <Post :post="post" />
       <Comments :comments="comments" />
-      <NewComment />
+      <NewComment :postId="$route.params.id" />
   </div>
 </template>
 
@@ -23,9 +23,21 @@ export default {
             axios.get(`https://blog-nuxt-67ba8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`),
             axios.get(`https://blog-nuxt-67ba8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)
         ])
+        // let commentsArray = [],
+        //     commentsArrayRes = []
+        // Object.keys(comments.data).forEach(key => {
+        //     commentsArray.push(comments.data[key])
+        // })
+        // for (let i=0; i < commentsArray.length; i++) {
+        //     if(commentsArray[i].postId === context.params.id && commentsArray[i].publish === true) {
+        //         commentsArrayRes.push(commentsArray[i])
+        //     }
+        // }
+        let commentsArrayRes = Object.values(comments.data).filter( comment => (comment.postId === context.params.id) && comment.publish)
+
         return {
             post: post.data,
-            comments: comments.data
+            comments: commentsArrayRes
         }
     }
 }

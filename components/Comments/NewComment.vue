@@ -19,6 +19,12 @@
 
 <script>
 export default {
+    props: {
+        postId: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
             message: null,
@@ -31,7 +37,7 @@ export default {
     methods: {
         onSubmit () {
             this.$store.dispatch('addComment', {
-                postId: '',
+                postId: this.postId,
                 publish: false,
                 ...this.comment
             })
@@ -49,7 +55,7 @@ export default {
 <style lang="scss">
     .new-comment {
         text-align: center;
-        background-color: #afffa4;
+        background-color: #676966;
         &__form {
             max-width: 600px;
             margin: 30px auto;
